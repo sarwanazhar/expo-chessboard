@@ -1,6 +1,6 @@
 {
   "name": "expo-chessboard",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A lightweight, simple, and high-performing chessboard for React Native with orientation support",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
