@@ -6,7 +6,6 @@ A lightweight, simple, and high-performing chessboard for React Native with orie
 
 Deeply inspired by the [Chess Youtube Episode](https://youtu.be/JulJJxbP_T0) from the series ["Can it be done in React Native?"](https://github.com/wcandillon/can-it-be-done-in-react-native) made by [William Candillon](https://github.com/wcandillon).
 
-**Inspired by:** [react-native-chessboard](https://github.com/enzomanuelmangano/react-native-chessboard) by Enzo Manuel Mangano
 
 <div align="center">
     <img src="https://github.com/sarwanazhar/expo-chessboard/blob/main/.assets/chessboard.gif" title="expo-chessboard">
