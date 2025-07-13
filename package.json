@@ -32,9 +32,16 @@
     "bootstrap": "yarn example && yarn && yarn pods"
   },
   "keywords": [
+    "chess",
+    "chessboard",
     "react-native",
-    "ios",
-    "android"
+    "expo",
+    "react-native-chess",
+    "expo-chessboard",
+    "chess game",
+    "chess app",
+    "multiplayer chess",
+    "chessboard component"
   ],
   "author": "Sarwan Azhar <sarwanazhar1234@gmail.com> (https://github.com/sarwanazhar)",
   "license": "MIT",
