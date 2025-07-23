@@ -69,13 +69,19 @@ type ChessboardProps = {
    * Useful if you want to customise the default durations used in the chessboard (in milliseconds).
    */
   durations?: ChessboardDurationsType;
+  /**
+   * Determines which player can make moves on the board. Set to 'white' to
+   * restrict interactions only to White pieces, 'black' to restrict to Black
+   * pieces, or 'both' (default) to allow moving pieces for both sides.
+   */
+  player?: 'white' | 'black' | 'both';
 };
 
 type ChessboardContextType = ChessboardProps &
   Required<
     Pick<
       ChessboardProps,
-      'gestureEnabled' | 'withLetters' | 'withNumbers' | 'boardSize' | 'orientation'
+      'gestureEnabled' | 'withLetters' | 'withNumbers' | 'boardSize' | 'orientation' | 'player'
     >
   > & { pieceSize: number } & {
     colors: Required<ChessboardColorsType>;
@@ -102,6 +108,7 @@ const defaultChessboardProps: ChessboardContextType = {
   withNumbers: true,
   boardSize: DEFAULT_BOARD_SIZE,
   pieceSize: DEFAULT_BOARD_SIZE / 8,
+  player: 'both',
 };
 
 const ChessboardPropsContext = React.createContext<ChessboardContextType>(
@@ -117,6 +124,7 @@ const ChessboardPropsContextProvider: React.FC<ChessboardProps> = React.memo(
         colors: { ...defaultChessboardProps.colors, ...rest.colors },
         durations: { ...defaultChessboardProps.durations, ...rest.durations },
         orientation: rest.orientation ?? defaultChessboardProps.orientation,
+        player: rest.player ?? defaultChessboardProps.player,
       };
       return { ...data, pieceSize: data.boardSize / 8 };
     }, [rest]);

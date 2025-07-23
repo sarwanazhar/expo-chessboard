@@ -45,6 +45,7 @@ const BoardOperationsContextProviderComponent = React.forwardRef<
     pieceSize,
     onMove: onChessboardMoveCallback,
     colors: { checkmateHighlight },
+    player,
   } = useChessboardProps();
   const { toTranslation } = useReversePiecePosition();
   const selectableSquares = useSharedValue<Square[]>([]);
@@ -185,6 +186,22 @@ const BoardOperationsContextProviderComponent = React.forwardRef<
 
   const onSelectPiece = useCallback(
     (square: Square) => {
+      // Restrict interaction according to `player` prop.
+      if (player !== 'both') {
+        const piece = chess.get(square);
+        const allowedColor = player === 'white' ? 'w' : 'b';
+        if (!piece || piece.color !== allowedColor) {
+          // Do not allow selecting pieces that the current player is not allowed to move.
+          return;
+        }
+
+        // Additionally make sure it is the correct turn; this check prevents users from
+        // attempting to move their pieces when it is not their turn.
+        if (chess.turn() !== allowedColor) {
+          return;
+        }
+      }
+
       selectedSquare.value = square;
 
       const validSquares = (chess.moves({
@@ -215,7 +232,7 @@ const BoardOperationsContextProviderComponent = React.forwardRef<
         return splittedSquare[splittedSquare.length - 1] as Square;
       });
     },
-    [chess, selectableSquares, selectedSquare]
+    [chess, selectableSquares, selectedSquare, player]
   );
 
   const moveTo = useCallback(

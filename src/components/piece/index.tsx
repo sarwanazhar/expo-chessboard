@@ -43,11 +43,19 @@ const Piece = React.memo(
       const {
         durations: { move: moveDuration },
         gestureEnabled: gestureEnabledFromChessboardProps,
+        player,
       } = useChessboardProps();
 
       const gestureEnabled = useDerivedValue(
-        () => turn.value === id.charAt(0) && gestureEnabledFromChessboardProps,
-        [id, gestureEnabledFromChessboardProps]
+        () => {
+          const isTurnPiece = turn.value === id.charAt(0);
+          const allowedByPlayer =
+            player === 'both' ||
+            (player === 'white' && id.charAt(0) === 'w') ||
+            (player === 'black' && id.charAt(0) === 'b');
+          return isTurnPiece && allowedByPlayer && gestureEnabledFromChessboardProps;
+        },
+        [id, player, gestureEnabledFromChessboardProps]
       );
 
       const { toPosition, toTranslation } = useReversePiecePosition();
@@ -255,9 +263,9 @@ const Piece = React.memo(
 
       return (
         <>
-          <Animated.View style={underlay} />
+          <Animated.View style={[underlay]} />
           <GestureDetector gesture={gesture}>
-            <Animated.View style={style}>
+            <Animated.View style={[style]}>
               <ChessPiece id={id} />
             </Animated.View>
           </GestureDetector>

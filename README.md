@@ -15,7 +15,6 @@ Deeply inspired by the [Chess Youtube Episode](https://youtu.be/JulJJxbP_T0) fro
 
 If you want this package in production, use it with caution.
 
-## **You can use this package to make a multiplayer game with sockets background i have example** [here](https://github.com/sarwanazhar/expo-chessboard/blob/main/exampleMultiplayer.tsx)
 
 ## Installation
 
@@ -61,6 +60,17 @@ const App = () => (
 Determines which side is at the bottom of the board. If set to 'black', the board will be rotated so that Black pieces start at the bottom.
 
 Default: `'white'`
+
+---
+
+### `player?: 'white' | 'black' | 'both'`
+
+Restricts which side can interact with the board.  
+• `'white'` – only White pieces can be moved and only on White's turn.  
+• `'black'` – only Black pieces can be moved and only on Black's turn.  
+• `'both'` – both sides can be moved (legacy behaviour).
+
+Default: `'both'`
 
 ---
 
