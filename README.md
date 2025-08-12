@@ -15,7 +15,7 @@ Deeply inspired by the [Chess Youtube Episode](https://youtu.be/JulJJxbP_T0) fro
 
 If you want this package in production, use it with caution.
 
-## **You can use this package to make a multiplayer game with sockets background i have example** [here](https://github.com/sarwanazhar/expo-chessboard/blob/main/exampleMultiplayer.tsx)
+## **You can use this package to make a multiplayer game with webSockets or socket.io
 
 ## Installation
 
